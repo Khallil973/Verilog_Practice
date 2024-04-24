@@ -1,0 +1,66 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000018916566390 .scope module, "tb" "tb" 2 1;
+ .timescale 0 0;
+v0000018916562870_0 .var "A", 0 0;
+v0000018916562910_0 .var "B", 0 0;
+v0000018916562a00_0 .var "C", 0 0;
+v0000018916562fa0_0 .net "Q", 0 0, L_0000018916686a30;  1 drivers
+S_0000018916566520 .scope module, "dut" "combinational_circuit" 2 7, 3 1 0, S_0000018916566390;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /INPUT 1 "C";
+    .port_info 3 /OUTPUT 1 "Q";
+L_0000018916689980 .functor AND 1, v0000018916562870_0, v0000018916562910_0, C4<1>, C4<1>;
+L_0000018916688940 .functor NOT 1, L_0000018916689980, C4<0>, C4<0>, C4<0>;
+L_0000018916689590 .functor OR 1, v0000018916562870_0, v0000018916562910_0, C4<0>, C4<0>;
+L_0000018916686b90 .functor NOT 1, L_0000018916689590, C4<0>, C4<0>, C4<0>;
+L_0000018916686e70 .functor AND 1, L_0000018916688940, L_0000018916686b90, C4<1>, C4<1>;
+L_0000018916686a30 .functor AND 1, L_0000018916686e70, v0000018916562a00_0, C4<1>, C4<1>;
+v0000018916686cf0_0 .net "A", 0 0, v0000018916562870_0;  1 drivers
+v00000189166868c0_0 .net "A_NAND_B", 0 0, L_0000018916688940;  1 drivers
+v00000189166894f0_0 .net "A_NOR_B", 0 0, L_0000018916686b90;  1 drivers
+v00000189166888a0_0 .net "B", 0 0, v0000018916562910_0;  1 drivers
+v00000189166898e0_0 .net "C", 0 0, v0000018916562a00_0;  1 drivers
+v00000189165666b0_0 .net "Q", 0 0, L_0000018916686a30;  alias, 1 drivers
+v0000018916566750_0 .net *"_ivl_0", 0 0, L_0000018916689980;  1 drivers
+v00000189165626a0_0 .net *"_ivl_4", 0 0, L_0000018916689590;  1 drivers
+v0000018916562740_0 .net *"_ivl_8", 0 0, L_0000018916686e70;  1 drivers
+    .scope S_0000018916566390;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000018916562870_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000018916562910_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000018916562a00_0, 0;
+    %delay 100, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000018916562870_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000018916562910_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000018916562a00_0, 0;
+    %delay 100, 0;
+    %end;
+    .thread T_0;
+    .scope S_0000018916566390;
+T_1 ;
+    %vpi_call 2 30 "$dumpfile", "dump.vsd" {0 0 0};
+    %vpi_call 2 31 "$dumpvars", 32'sb00000000000000000000000000000000 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "design.v";
