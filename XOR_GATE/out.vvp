@@ -1,0 +1,59 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002b3fddf65d0 .scope module, "tb" "tb" 2 1;
+ .timescale 0 0;
+v000002b3fddf6990_0 .var "A", 0 0;
+v000002b3fdf1b6d0_0 .var "B", 0 0;
+v000002b3fdf1b770_0 .net "Y", 0 0, L_000002b3fdf16b50;  1 drivers
+S_000002b3fddf6760 .scope module, "dut" "gate" 2 6, 3 1 0, S_000002b3fddf65d0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "Y";
+L_000002b3fdf16b50 .functor XOR 1, v000002b3fddf6990_0, v000002b3fdf1b6d0_0, C4<0>, C4<0>;
+v000002b3fdf1ef10_0 .net "A", 0 0, v000002b3fddf6990_0;  1 drivers
+v000002b3fdf168a0_0 .net "B", 0 0, v000002b3fdf1b6d0_0;  1 drivers
+v000002b3fddf68f0_0 .net "Y", 0 0, L_000002b3fdf16b50;  alias, 1 drivers
+    .scope S_000002b3fddf65d0;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000002b3fddf6990_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000002b3fdf1b6d0_0, 0;
+    %delay 100, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000002b3fddf6990_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000002b3fdf1b6d0_0, 0;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000002b3fddf6990_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000002b3fdf1b6d0_0, 0;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000002b3fddf6990_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000002b3fdf1b6d0_0, 0;
+    %delay 100, 0;
+    %end;
+    .thread T_0;
+    .scope S_000002b3fddf65d0;
+T_1 ;
+    %vpi_call 2 33 "$dumpfile", "dump.vsd" {0 0 0};
+    %vpi_call 2 34 "$dumpvars", 32'sb00000000000000000000000000000000 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "design.v";
