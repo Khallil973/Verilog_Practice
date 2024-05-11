@@ -1,0 +1,66 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001e3f81ab000 .scope module, "tb" "tb" 2 1;
+ .timescale 0 0;
+v000001e3f81f6400_0 .var "A", 31 0;
+v000001e3f81f64a0_0 .var "B", 31 0;
+RS_000001e3f81f7248 .resolv tri, L_000001e3f823b080, L_000001e3f823b120;
+v000001e3f81f3bd0_0 .net8 "C", 31 0, RS_000001e3f81f7248;  2 drivers
+L_000001e3f823c090 .functor BUFT 1, C4<000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v000001e3f81f3c70_0 .net *"_ivl_16", 23 0, L_000001e3f823c090;  1 drivers
+L_000001e3f823c048 .functor BUFT 1, C4<0000000000000000>, C4<0>, C4<0>, C4<0>;
+v000001e3f81f3d10_0 .net *"_ivl_7", 15 0, L_000001e3f823c048;  1 drivers
+L_000001e3f823bb20 .part v000001e3f81f6400_0, 0, 16;
+L_000001e3f823b4e0 .part v000001e3f81f64a0_0, 0, 16;
+L_000001e3f823b080 .concat [ 16 16 0 0], L_000001e3f823ba80, L_000001e3f823c048;
+L_000001e3f823b300 .part v000001e3f81f6400_0, 0, 8;
+L_000001e3f823b8a0 .part v000001e3f81f64a0_0, 0, 8;
+L_000001e3f823b120 .concat [ 8 24 0 0], L_000001e3f823bf80, L_000001e3f823c090;
+S_000001e3f81f60e0 .scope module, "dut" "parameterized" 2 11, 3 1 0, S_000001e3f81ab000;
+ .timescale 0 0;
+    .port_info 0 /INPUT 16 "A";
+    .port_info 1 /INPUT 16 "B";
+    .port_info 2 /OUTPUT 16 "C";
+P_000001e3f81ac040 .param/l "WIDTH" 0 3 1, +C4<00000000000000000000000000010000>;
+v000001e3f81ab190_0 .net "A", 15 0, L_000001e3f823bb20;  1 drivers
+v000001e3f81c28d0_0 .net "B", 15 0, L_000001e3f823b4e0;  1 drivers
+v000001e3f81aad20_0 .net "C", 15 0, L_000001e3f823ba80;  1 drivers
+L_000001e3f823ba80 .arith/sum 16, L_000001e3f823bb20, L_000001e3f823b4e0;
+S_000001e3f81f6270 .scope module, "dut_1" "parameterized" 2 18, 3 1 0, S_000001e3f81ab000;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "A";
+    .port_info 1 /INPUT 8 "B";
+    .port_info 2 /OUTPUT 8 "C";
+P_000001e3f81ac080 .param/l "WIDTH" 0 3 1, +C4<00000000000000000000000000001000>;
+v000001e3f81aab60_0 .net "A", 7 0, L_000001e3f823b300;  1 drivers
+v000001e3f81aa9a0_0 .net "B", 7 0, L_000001e3f823b8a0;  1 drivers
+v000001e3f81a9db0_0 .net "C", 7 0, L_000001e3f823bf80;  1 drivers
+L_000001e3f823bf80 .arith/sum 8, L_000001e3f823b300, L_000001e3f823b8a0;
+    .scope S_000001e3f81ab000;
+T_0 ;
+    %pushi/vec4 1, 0, 32;
+    %assign/vec4 v000001e3f81f6400_0, 0;
+    %pushi/vec4 2, 0, 32;
+    %assign/vec4 v000001e3f81f64a0_0, 0;
+    %delay 100, 0;
+    %end;
+    .thread T_0;
+    .scope S_000001e3f81ab000;
+T_1 ;
+    %vpi_call 2 33 "$dumpfile", "dump.vcd" {0 0 0};
+    %vpi_call 2 34 "$dumpvars", 32'sb00000000000000000000000000000000 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb.v";
+    "design.v";
